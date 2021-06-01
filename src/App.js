@@ -6,6 +6,11 @@ import './App.css'
 // JSX is Case-Sensitive bcoz Javascript id Case-Sensitive
 
 class App extends Component {
+
+  deleteHandler(message) {
+    alert(message);
+  }
+
   render() {
     let subscribers = [
       {
@@ -38,7 +43,7 @@ class App extends Component {
                   <span className="grid-item">{sub.name1}</span>
                   <span className="grid-item">{sub.phone1}</span>
                   <span className="grid-item action-btn-container">
-                    <button className="custom-btn delete-btn">Delete</button>
+                    <button className="custom-btn delete-btn" onClick={this.deleteHandler.bind(this, "Delete Clicked")}>Delete</button>
                   </span>
                 </div>
               )

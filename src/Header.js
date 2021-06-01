@@ -7,7 +7,7 @@ const Header = function (props) {
         <div className="header">  {/* "class" in HTML == "className" in JSX */}
             {props.heading}
         </div>
-    )
+    );
 }
 
 // class Header extends Component {
@@ -17,7 +17,7 @@ const Header = function (props) {
 //             <div className="header" >
 //                 {this.props.heading}
 //             </div>
-//         )
+//         );
 //     }
 // }
 
