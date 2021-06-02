@@ -1,24 +1,12 @@
 
 import React, { Component } from 'react';
-import Header from "./Header"
-import './App.css'
+import Header from "./Header";
+import './ShowSubscribers.css';
+import { Link } from 'react-router-dom';
 
 // JSX is Case-Sensitive bcoz Javascript id Case-Sensitive
 
-// let subscribers = [
-//   {
-//     id: 1,
-//     name1: 'Kamal',
-//     phone1: '1111111111'
-//   },
-//   {
-//     id: 2,
-//     name1: 'Chamal',
-//     phone1: '9999999999'
-//   }
-// ]
-
-class App extends Component {
+class ShowSubscribers extends Component {
 
   constructor() {
     super();
@@ -27,14 +15,18 @@ class App extends Component {
     }
   }
 
-  render() {
+  onDeletedClick = (subscriberId) => {
+    this.props.deleteSubscriberHandler(subscriberId);
+  }
 
+
+  render() {
     return (
 
       <div>
         <Header heading="Phone Directory" />
         <div className="component-body-container">
-          <button className="custom-btn add-btn">Add</button>
+          <Link to="/add"> <button className="custom-btn add-btn">Add</button> </Link>
 
           <div className="grid-container heading-container">
             <span className="grid-item name-heading">Name</span>
@@ -42,13 +34,13 @@ class App extends Component {
           </div>
 
           {
-            this.state.subscribersListToShow.map(sub => {
+            this.props.listOfSubscribers.map(sub => {
               return (
                 <div key={sub.id} className="grid-container">
                   <span className="grid-item">{sub.name}</span>
                   <span className="grid-item">{sub.phone}</span>
                   <span className="grid-item action-btn-container">
-                    <button className="custom-btn delete-btn">Delete</button>
+                    <button className="custom-btn delete-btn" onClick={this.onDeletedClick.bind(this, sub.id)}>Delete</button>
                   </span>
                 </div>
               )
@@ -62,7 +54,7 @@ class App extends Component {
 }
 
 
-export default App;
+export default ShowSubscribers;
 
 
   // render() {
